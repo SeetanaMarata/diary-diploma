@@ -214,3 +214,29 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Docker
+*.pyc
+__pycache__
+media
+
+# Virtual Environment
+
+.venv/
+
+
+# IDE
+.vscode/
+
+# Database
+*.sqlite3
+*.db
+
+
+# Media files
+/media/
+/staticfiles/
+
+# OS
+.DS_Store
+Thumbs.db
