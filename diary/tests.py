@@ -84,3 +84,37 @@ class DiaryTestCase(TestCase):
 
         # Проверяем, что запись удалилась
         self.assertFalse(DiaryEntry.objects.filter(id=entry.id).exists())
+
+
+class DatabaseTestCase(TestCase):
+    """Тесты для проверки работы с БД"""
+
+    def test_database_connection(self):
+        """Тест подключения к БД"""
+        from django.db import connection
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1")
+            row = cursor.fetchone()
+            self.assertEqual(row[0], 1)
+
+    def test_diary_entry_count(self):
+        """Тест количества записей"""
+        user = User.objects.create_user(username='testdb', password='test123')
+        DiaryEntry.objects.create(author=user, title='Test1', content='Content1')
+        DiaryEntry.objects.create(author=user, title='Test2', content='Content2')
+
+        count = DiaryEntry.objects.filter(author=user).count()
+        self.assertEqual(count, 2)
+
+
+class DockerTestCase(TestCase):
+    """Тесты для проверки Docker настроек"""
+
+    def test_env_variables(self):
+        """Тест наличия переменных окружения для БД"""
+        import os
+        # Проверяем, что переменные для БД заданы (если мы в Docker)
+        if os.environ.get('DB_NAME'):
+            self.assertIsNotNone(os.environ.get('DB_NAME'))
+            self.assertIsNotNone(os.environ.get('DB_USER'))
+            self.assertIsNotNone(os.environ.get('DB_PASSWORD'))
