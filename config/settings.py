@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-# JWT настройки (добавь в самый конец файла)
+
 from datetime import timedelta
 
 SIMPLE_JWT = {
@@ -161,6 +161,6 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
 
-# Куда перенаправлять после входа
+
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/dashboard/"

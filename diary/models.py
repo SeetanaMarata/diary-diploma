@@ -15,6 +15,7 @@ class DiaryEntry(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        verbose_name_plural = "Diary entries"
 
     def __str__(self):
         return f"{self.title} - {self.author.username}"

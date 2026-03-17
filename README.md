@@ -41,21 +41,25 @@
 poetry install
 или через pip:
 
-
+```bash
 pip install -r requirements.txt
-Применить миграции
-
-
+```
+### Применить миграции
+```bash
 python manage.py migrate
-Создать суперпользователя
-
-
+```
+### Создать суперпользователя
+```bash
 python manage.py createsuperuser
-Запустить сервер
+```
 
+### Запустить сервер
 
+```bash
 python manage.py runserver
-Открыть в браузере
+```
+
+### Открыть в браузере
 
 Сайт: http://127.0.0.1:8000
 
