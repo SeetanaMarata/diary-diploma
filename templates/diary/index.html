@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - Личный дневник{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-4 mb-4">📝 Твой личный дневник</h1>
+    <p class="lead mb-5">Сохраняй свои мысли, настроение и важные моменты в безопасном месте</p>
+
+    {% if user.is_authenticated %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-5">
+                    <h3>Добро пожаловать, {{ user.username }}!</h3>
+                    <p class="mt-3">У тебя есть записи в дневнике</p>
+                    <a href="/dashboard/" class="btn btn-primary">Перейти к записям →</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card p-5">
+                    <h3>Начни вести дневник прямо сейчас</h3>
+                    <p class="mt-3">Это бесплатно и безопасно</p>
+                    <a href="/register/" class="btn btn-primary mb-2">Зарегистрироваться</a>
+                    <a href="/login/" class="btn btn-outline-primary">Войти</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
